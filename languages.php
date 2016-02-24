@@ -1,20 +1,10 @@
-<?php require_once("header.php"); ?>
+<?php include("header.php"); ?>
+<?php include("template.php"); ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-     <title> Languages </title>
-	 <link rel="stylesheet"  href="main.css" />
-</head>
-<body>
-    <div class="container">
+<div class="container">
 	<header>
-		 <?php $image_set = $database->find_all_images(); ?>
-            <?php while($image = mysqli_fetch_assoc($image_set)) { ?>
-            <?php if($image["record_id"] == $selected_record_id) { ?>
-            <image src="logo/<?php echo $image["image_name"]; ?>" class="logo" />
-            <?php } ?>
-            <?php }?>
+	        <image src="logo/<?php echo $image_name; ?>" class="logo" />
+            
 	      <nav class="nav">
 		    <ul>
 			   <li><a href="home_page.php"> HOME </a></li>
@@ -28,38 +18,23 @@
     <section class="left_side">
 	    <article>
 		    <header>
-		    <?php $record_set = $database->find_all_record(); ?>
-            <?php while ($record = mysqli_fetch_assoc($record_set)) { ?>
-            <?php if($record["id"] == $selected_record_id){ ?>			
-       			<h1><?php echo $record["name"]; ?></h1>
+		    <h1><?php echo $record_name; ?></h1>
 			</header>
-                <p><?php echo $record["discrip"]; ?></p>			
-				<?php } ?>
-            <?php } ?>				
+                <p><?php echo $record_discrip; ?></p>		
 		</article>
 	</section>
 	<aside class="right_side">
 	    <div>
 		    <h1> SOCIAL LINKS </h1>
-			<?php $social_set = $database->find_all_social_link(); ?>
-			<?php while($social = mysqli_fetch_assoc($social_set)){ ?>
-			<?php if($social["record_id"]== $selected_record_id){ ?>
-            <ul>
-			    <li><a href=""><?php echo $social["discrip"]; ?></a></li>
-            <?php } ?>
-            <?php } ?>
-			</ul>
+			    <ul>
+			        <li><a href=""><?php echo $social_discrip; ?></a></li>
+                </ul>
 		</div>
 		
 		<div>
 	        <h1> STUDY MATERIAL </h1>
-			<?php $study_set = $database->find_all_study_material(); ?>
-			<?php while($study = mysqli_fetch_assoc($study_set)){ ?>
-			<?php if($study["record_id"]== $selected_record_id){ ?>
 			<ul>
-			    <li><a href=""><?php echo $study["discrip"]; ?></a></li>
-			<?php } ?>
-            <?php } ?>			
+			    <li><a href=""><?php echo $study_discrip; ?></a></li>
 			</ul>
 		</div>
 		<div>
