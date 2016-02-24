@@ -25,7 +25,7 @@ class MySQLDatabase {
    } 
    private function confirm_query($result) {
      if(!$result) {
-       die("Database query failed. ");
+       die("Database query failed. "mysqli_error($this->connection));
     }
    }
    public function mysqli_prep($string) {
@@ -58,10 +58,11 @@ class MySQLDatabase {
 	 $selected_record_id = null;
    }
   }
-   public function redirect_to($new_location){
-    header("Location: ".$new_location);
-	exit;
-   }
+  public function form_entry(){
+    $query = "INSERT INTO enquiry(First_Name, Last_Name, Email, Phone_num, Course) VALUES ('{$firstname}','{$lastname}','{$email}','{$phone}','{$course}')";
+    $query_result = $database->query($query);
+	return $query_result;
+	 } 
 }	 
 $database = new MySQLDatabase();
 $db =& $database;
