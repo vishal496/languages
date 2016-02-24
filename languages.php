@@ -1,8 +1,4 @@
-<?php
-require_once("database.php");
-require_once("form_entry.php");
-?>
-<?php $all_record = $database->find_selected_record(); ?>
+<?php require_once("header.php"); ?>
 
 <!DOCTYPE html>
 <html>
@@ -13,6 +9,12 @@ require_once("form_entry.php");
 <body>
     <div class="container">
 	<header>
+		 <?php $image_set = $database->find_all_images(); ?>
+            <?php while($image = mysqli_fetch_assoc($image_set)) { ?>
+            <?php if($image["record_id"] == $selected_record_id) { ?>
+            <image src="logo/<?php echo $image["image_name"]; ?>" class="logo" />
+            <?php } ?>
+            <?php }?>
 	      <nav class="nav">
 		    <ul>
 			   <li><a href="home_page.php"> HOME </a></li>
@@ -85,9 +87,4 @@ require_once("form_entry.php");
 		</div>
 	</aside>
 	
-	<footer class="page_footer">
-	    &copy Copyright PARASHAR
-	</footer>
-	</div>
-</body>
-</html>   	 
+   	 <?php require_once("footer.php"); ?>  	 
