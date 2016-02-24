@@ -9,16 +9,15 @@ if(isset($_POST['submit'])){
   $phone = isset($_POST['phone_no'])? $_POST['phone_no']:"";
   $course =isset($_POST['course'])? $_POST['course']:"";
   //2. Perform database query
-  $query = "INSERT INTO enquiry(First_Name, Last_Name, Email, Phone_num, Course) VALUES ('{$firstname}','{$lastname}','{$email}','{$phone}','{$course}')";
-  $result = $database->query($query);
+  $query = $database->form_entry();
   // Test if there was a query error
-  if($result){
+  if($query){
     // Success
-	//$goto = $database->redirect_to("languages.php");
+    //redirect_to("languages.php");
   } else {
     // Failure
     // $message = "Subject creation failed";
-    die("Database query failed.");
+    die("Database query failed."mysqli_error($connection));
 	}
 }
 ?>
