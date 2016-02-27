@@ -1,6 +1,4 @@
-<?php 
-include("database.php");
-?>
+
 <!DOCTYPE html>
 <HTML>
 <head>
@@ -14,21 +12,13 @@ include("database.php");
     </header>
     <section class="left_side">
 	    <h1> MENU </h1>
-	    <?php 
-        $result = $database->find_all_record();
-        ?>
+	    
 		<ul>
-		   <?php while($found_result = mysqli_fetch_assoc($result)) {
-		    ?>
-			<li><a href="languages.php?record=<?php echo urlencode($found_result["id"]); ?>"><?php echo $found_result["name"]; ?></a></li>
-			<?php
-			  }
-			 ?> 
+		   <li><a href="page_controller.php?record=<?php echo urlencode($found_id_first); ?>"><?php echo $found_name_first; ?></a></li>
+                   <li><a href="page_controller.php?record=<?php echo urlencode($found_id_second); ?>"><?php echo $found_name_second; ?></a></li>
+                   <li><a href="page_controller.php?record=<?php echo urlencode($found_id_third); ?>"><?php echo $found_name_third; ?></a></li>
+                   <li><a href="page_controller.php?record=<?php echo urlencode($found_id_fourth); ?>"><?php echo $found_name_fourth; ?></a></li>
+                   <li><a href="page_controller.php?record=<?php echo urlencode($found_id_fifth); ?>"><?php echo $found_name_fifth; ?></a></li>
 		</ul>
 	</section>
-	<footer class="page_footer">
-	    &copy Copyright PARASHAR
-	</footer>
-    </div>	
-</body>
-</HTML>		
+<?php require_once("footer.php"); ?>  	 		
