@@ -1,13 +1,12 @@
 <?php include("header.php"); ?>
-<?php include("template.php"); ?>
-
-<div class="container">
+   
+   <div class="container">
 	<header>
 	        <image src="logo/<?php echo $image_name; ?>" class="logo" />
             
 	      <nav class="nav">
 		    <ul>
-			   <li><a href="home_page.php"> HOME </a></li>
+			   <li><a href="home_controller.php"> HOME </a></li>
 			   <li><a href=""> TUTORIAL </a></li>
 			   <li><a href=""> ABOUT </a></li>
 			   <li><a href=""> CONTACT </a></li>
@@ -27,14 +26,18 @@
 	    <div>
 		    <h1> SOCIAL LINKS </h1>
 			    <ul>
-			        <li><a href=""><?php echo $social_discrip; ?></a></li>
+			        <li><a href=""><?php echo $link[0]; ?></a></li>
+					<li><a href=""><?php echo $link[1]; ?></a></li>
+					<li><a href=""><?php echo $link[2]; ?></a></li>
+					<li><a href=""><?php echo $link[3]; ?></a></li>
                 </ul>
 		</div>
 		
 		<div>
 	        <h1> STUDY MATERIAL </h1>
 			<ul>
-			    <li><a href=""><?php echo $study_discrip; ?></a></li>
+			    <li><a href=""><?php echo $study[0]; ?></a></li>
+				<li><a href=""><?php echo $study[1]; ?></a></li>
 			</ul>
 		</div>
 		<div>
@@ -62,4 +65,4 @@
 		</div>
 	</aside>
 	
-   	 <?php require_once("footer.php"); ?>  	 
+ <?php require_once("footer.php"); ?>  	 
