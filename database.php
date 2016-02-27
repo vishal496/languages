@@ -25,7 +25,7 @@ class MySQLDatabase {
    } 
    private function confirm_query($result) {
      if(!$result) {
-       die("Database query failed. "mysqli_error($this->connection));
+       die("Database query failed. ");
     }
    }
    public function mysqli_prep($string) {
@@ -35,36 +35,40 @@ class MySQLDatabase {
    public function find_all_record(){
      $sql = "SELECT * FROM record";
      $record_set = mysqli_query($this->connection, $sql);
-     return $record_set; 	 
+	 $result = mysqli_fetch_all($record_set);
+	 return $result;
 	 }
 	
    public function find_all_social_link(){
      $sql = "SELECT * FROM social_links";
      $link_set = mysqli_query($this->connection, $sql);
-     return $link_set; 	 
+	 $result = mysqli_fetch_all($link_set);
+     return $result; 	 
 	 }
 	 
    public function find_all_study_material(){
      $sql = "SELECT * FROM study_material";
-     $record_set = mysqli_query($this->connection, $sql);
-     return $record_set; 	 
+     $study_set = mysqli_query($this->connection, $sql);
+	 $result = mysqli_fetch_all($study_set);
+     return $result; 	 
 	 }
 	 
-   public function find_selected_record(){
-     global $selected_record_id;
-	 if(isset($_GET["record"])){
-	 $selected_record_id = $_GET["record"];
-	 } else {
-	 $selected_record_id = null;
-   }
-  }
-  public function form_entry(){
+   
+   public function find_all_images(){
+     $sql = "SELECT * FROM images";
+	 $image_set = mysqli_query($this->connection, $sql);
+	 $result = mysqli_fetch_all($image_set);
+	 return $result;
+	 }
+	 
+	 
+   public function form_entry(){
     $query = "INSERT INTO enquiry(First_Name, Last_Name, Email, Phone_num, Course) VALUES ('{$firstname}','{$lastname}','{$email}','{$phone}','{$course}')";
     $query_result = $database->query($query);
 	return $query_result;
-	 } 
+	 }
+   	 
 }	 
 $database = new MySQLDatabase();
-$db =& $database;
 
 ?>	
