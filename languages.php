@@ -6,7 +6,7 @@
             
 	      <nav class="nav">
 		    <ul>
-			   <li><a href="home_controller.php"> HOME </a></li>
+			   <li><a href="index.php"> HOME </a></li>
 			   <li><a href=""> TUTORIAL </a></li>
 			   <li><a href=""> ABOUT </a></li>
 			   <li><a href=""> CONTACT </a></li>
@@ -25,20 +25,20 @@
 	<aside class="right_side">
 	    <div>
 		    <h1> SOCIAL LINKS </h1>
+			    <?php for($i=0;$i<$array_social_links_length;$i++) { ?>
 			    <ul>
-			        <li><a href=""><?php echo $link[0]; ?></a></li>
-					<li><a href=""><?php echo $link[1]; ?></a></li>
-					<li><a href=""><?php echo $link[2]; ?></a></li>
-					<li><a href=""><?php echo $link[3]; ?></a></li>
-                </ul>
+			        <li><a href=""><?php echo $array_social_links[$i]['discrip']; ?></a></li>
+				</ul>
+				<?php } ?>
 		</div>
 		
 		<div>
 	        <h1> STUDY MATERIAL </h1>
+			<?php for($j=0;$j<$array_study_set_length;$j++) { ?>
 			<ul>
-			    <li><a href=""><?php echo $study[0]; ?></a></li>
-				<li><a href=""><?php echo $study[1]; ?></a></li>
+			    <li><a href=""><?php echo $array_study_set[$j]['discrip']; ?></a></li>
 			</ul>
+			<?php } ?>
 		</div>
 		<div>
 		    <form action="form_entry.php" method="post">
