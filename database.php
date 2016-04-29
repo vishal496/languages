@@ -4,7 +4,7 @@ require_once("config.php");
 class MySQLDatabase {
 
    private $connection;
-
+   
    function __construct(){
      $this->open_connection();
 	}
@@ -35,30 +35,32 @@ class MySQLDatabase {
    public function find_all_record(){
      $sql = "SELECT * FROM record";
      $record_set = mysqli_query($this->connection, $sql);
-	 $result = mysqli_fetch_all($record_set);
-	 return $result;
-	 }
-	
-   public function find_all_social_link(){
-     $sql = "SELECT * FROM social_links";
-     $link_set = mysqli_query($this->connection, $sql);
-	 $result = mysqli_fetch_all($link_set);
-     return $result; 	 
+	 return $record_set;
 	 }
 	 
-   public function find_all_study_material(){
-     $sql = "SELECT * FROM study_material";
+	public function find_all_record_discrip($action){
+     $sql = "SELECT discrip FROM record WHERE name='$action'";
+     $record_set = mysqli_query($this->connection, $sql);
+	 return $record_set;
+	 } 
+	
+   public function find_all_social_link($action){
+     $sql = "SELECT discrip FROM social_links WHERE record_name='$action'";
+     $link_set = mysqli_query($this->connection, $sql);
+     return $link_set; 	 
+	 }
+	 
+   public function find_all_study_material($action){
+     $sql = "SELECT discrip FROM study_material WHERE record_name='$action'";
      $study_set = mysqli_query($this->connection, $sql);
-	 $result = mysqli_fetch_all($study_set);
-     return $result; 	 
+     return $study_set; 	 
 	 }
 	 
    
-   public function find_all_images(){
-     $sql = "SELECT * FROM images";
+   public function find_images($action){
+     $sql = "SELECT image_name FROM images WHERE image_name='$action.png'";
 	 $image_set = mysqli_query($this->connection, $sql);
-	 $result = mysqli_fetch_all($image_set);
-	 return $result;
+	 return $image_set;
 	 }
 	 
 	 
@@ -70,5 +72,4 @@ class MySQLDatabase {
    	 
 }	 
 $database = new MySQLDatabase();
-
 ?>	
